@@ -1,9 +1,21 @@
-Description: Use Debian's ply instead of the bundled ply
+From 4e0b47ad9bd463acfcb8736e027b5e005dcf9aaf Mon Sep 17 00:00:00 2001
+From: Stefano Rivera <stefanor@debian.org>
+Date: Thu, 8 Oct 2015 10:23:38 -0700
+Subject: Use Debian's ply instead of the bundled ply
+
  We prefer to avoid bundled libraries in Debian, don't use the bundled ply.
-Author: Stefano Rivera <stefanor@debian.org>
 Last-Update: 2013-01-12
 Forwarded: not-needed
 
+Patch-Name: system-ply
+---
+ pycparser/c_lexer.py  | 4 ++--
+ pycparser/c_parser.py | 2 +-
+ setup.py              | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/pycparser/c_lexer.py b/pycparser/c_lexer.py
+index c7443b8..8399a17 100644
 --- a/pycparser/c_lexer.py
 +++ b/pycparser/c_lexer.py
 @@ -9,8 +9,8 @@
@@ -17,6 +29,8 @@ Forwarded: not-needed
  
  
  class CLexer(object):
+diff --git a/pycparser/c_parser.py b/pycparser/c_parser.py
+index dc13962..ed581d5 100644
 --- a/pycparser/c_parser.py
 +++ b/pycparser/c_parser.py
 @@ -8,7 +8,7 @@
@@ -28,14 +42,16 @@ Forwarded: not-needed
  
  from . import c_ast
  from .c_lexer import CLexer
+diff --git a/setup.py b/setup.py
+index 07a62da..a6cb267 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -22,7 +22,7 @@
+@@ -49,7 +49,7 @@ setup(
      classifiers = [
          'Programming Language :: Python :: 2',
          'Programming Language :: Python :: 3',],
 -    packages=['pycparser', 'pycparser.ply'],
 +    packages=['pycparser'],
      package_data={'pycparser': ['*.cfg']},
+     cmdclass={'install': install, 'sdist': sdist},
  )
- 
