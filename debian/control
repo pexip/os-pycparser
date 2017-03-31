@@ -1,8 +1,9 @@
 Source: pycparser
 Section: python
 Priority: optional
-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
-Uploaders: Stefano Rivera <stefanor@debian.org>
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+XSBC-Pexip-Original-Uploaders: Stefano Rivera <stefanor@debian.org>
 Build-Depends:
  debhelper (>= 8.1),
  dh-python (>= 1.20140511),
@@ -17,6 +18,7 @@ X-Python3-Version: >= 3.2
 XS-Testsuite: autopkgtest
 Vcs-Svn: svn://anonscm.debian.org/python-modules/packages/pycparser/trunk/
 Vcs-Browser: http://anonscm.debian.org/viewvc/python-modules/packages/pycparser/trunk/
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
 
 Package: python-pycparser
 Architecture: all
