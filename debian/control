@@ -18,7 +18,7 @@ X-Python3-Version: >= 3.2
 XS-Testsuite: autopkgtest
 Vcs-Svn: svn://anonscm.debian.org/python-modules/packages/pycparser/trunk/
 Vcs-Browser: http://anonscm.debian.org/viewvc/python-modules/packages/pycparser/trunk/
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
 
 Package: python-pycparser
 Architecture: all
