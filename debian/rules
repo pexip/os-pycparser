@@ -8,11 +8,11 @@ export PYBUILD_AFTER_TEST=rm -f {build_dir}/parser.out {build_dir}/lextab.py {bu
 %:
 	dh $@ --with python2,python3 --buildsystem pybuild
 
-override_dh_auto_build: clean-generated-code
+override_dh_auto_build: clean-source
 	cd pycparser && python _build_tables.py
 	dh_auto_build
 
-override_dh_auto_clean: clean-generated-code
+override_dh_auto_clean: clean-source
 	dh_auto_clean
 
 override_dh_python2:
@@ -21,12 +21,8 @@ override_dh_python2:
 
 override_dh_python3:
 	dh_python3
-	# I blame jwilk for this temporary hack: (waiting for #714099)
-	sed -e 's/python-/python3-/g' /usr/bin/dh_python-ply | \
-		perl - $$(find $(PYBUILD_DESTDIR_python3) -name '*tab.py')
+	dh_python3-ply $$(find $(PYBUILD_DESTDIR_python3) -name '*tab.py')
 
-clean-generated-code:
+clean-source:
 	cd pycparser && rm -f lextab.py yacctab.py c_ast.py
-
-get-packaged-orig-source:
-	uscan --noconf --rename --repack --download-current-version --destdir=.
+	rm -rf pycparser/ply

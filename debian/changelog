@@ -1,3 +1,50 @@
+pycparser (2.17-2) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Bumped debhelper compat level to 10
+  * d/control: Removed pre-wheezy dependency version
+
+  [ Stefano Rivera ]
+  * Build with python-ply 3.9 (Closes: #844714)
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 20 Nov 2016 21:49:30 +0100
+
+pycparser (2.17-1) unstable; urgency=medium
+
+  [ Stefano Rivera ]
+  * New upstream release.
+  * Bump copyrights.
+  * dh_python3-ply now exists. Remove hack.
+  * Bump debhelper compat level to 9.
+  * Bump Standards-Version to 3.9.8, no changes needed.
+  * No need to re-pack any more, upstream dropped lcc.
+
+  [ Ondřej Nový ]
+  * Fixed VCS URL (https)
+
+ -- Stefano Rivera <stefanor@debian.org>  Thu, 10 Nov 2016 13:06:58 +0000
+
+pycparser (2.14+dfsg-2) unstable; urgency=medium
+
+  * Team upload.
+  * No change rebuild for updated python-ply dependency.
+
+ -- Barry Warsaw <barry@debian.org>  Tue, 15 Sep 2015 09:01:54 -0400
+
+pycparser (2.14+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+  * Bump copyright years, and add a copyright holder.
+  * Drop patch relative-tests, superseded upstream.
+  * Switch watch file to use dversionmangle and repacksuffix, now that it
+    exists.
+  * Point watch file at pypi.debian.net.
+  * Drop XS-Testsuite control header, no longer needed.
+  * Bump Standards-Version to 3.9.6, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 03 Jul 2015 17:58:11 -0700
+
 pycparser (2.10+dfsg-3pexip1) pexip; urgency=low
 
   * Prepare Pexip packaging
