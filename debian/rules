@@ -1,23 +1,20 @@
 #!/usr/bin/make -f
 
-export PYBUILD_DESTDIR_python2=debian/python-pycparser
 export PYBUILD_DESTDIR_python3=debian/python3-pycparser
-export PYBUILD_TEST_ARGS={dir}/tests
-export PYBUILD_AFTER_TEST=rm -f {build_dir}/parser.out {build_dir}/lextab.py {build_dir}/yacctab.py
+export PYBUILD_BEFORE_TEST=ln -s {dir}/examples {dir}/utils {build_dir}
+export PYBUILD_AFTER_TEST=rm -f {build_dir}/parser.out \
+       {build_dir}/lextab.py {build_dir}/yacctab.py \
+       {build_dir}/utils {build_dir}/examples
 
 %:
-	dh $@ --with python2,python3 --buildsystem pybuild
+	dh $@ --with python3 --buildsystem pybuild
 
 override_dh_auto_build: clean-source
-	cd pycparser && python _build_tables.py
+	cd pycparser && python3 _build_tables.py
 	dh_auto_build
 
 override_dh_auto_clean: clean-source
 	dh_auto_clean
-
-override_dh_python2:
-	dh_python2
-	dh_python-ply $$(find $(PYBUILD_DESTDIR_python2) -name '*tab.py')
 
 override_dh_python3:
 	dh_python3
