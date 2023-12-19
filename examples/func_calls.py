@@ -1,25 +1,23 @@
 #-----------------------------------------------------------------
-# pycparser: func_defs.py
+# pycparser: func_calls.py
 #
 # Using pycparser for printing out all the calls of some function
 # in a C file.
 #
-# Copyright (C) 2008-2015, Eli Bendersky
+# Eli Bendersky [https://eli.thegreenplace.net/]
 # License: BSD
 #-----------------------------------------------------------------
 from __future__ import print_function
+import platform
 import sys
 
 # This is not required if you've installed pycparser into
 # your site-packages/ with setup.py
 sys.path.extend(['.', '..'])
 
-from pycparser import c_parser, c_ast, parse_file
+from pycparser import c_ast, parse_file
 
-
-# A visitor with some state information (the funcname it's
-# looking for)
-#
+# A visitor with some state information (the funcname it's looking for)
 class FuncCallVisitor(c_ast.NodeVisitor):
     def __init__(self, funcname):
         self.funcname = funcname
@@ -27,6 +25,9 @@ class FuncCallVisitor(c_ast.NodeVisitor):
     def visit_FuncCall(self, node):
         if node.name.name == self.funcname:
             print('%s called at %s' % (self.funcname, node.name.coord))
+        # Visit args in case they contain more func calls.
+        if node.args:
+            self.visit(node.args)
 
 
 def show_func_calls(filename, funcname):
@@ -40,7 +41,7 @@ if __name__ == "__main__":
         filename = sys.argv[1]
         func = sys.argv[2]
     else:
-        filename = 'examples/c_files/hash.c'
-        func = 'malloc'
+        filename = 'examples/c_files/basic.c'
+        func = 'foo'
 
     show_func_calls(filename, func)
