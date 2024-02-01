@@ -1,3 +1,9 @@
+pycparser (2.21-1+pexip24u2) pexip-bookworm; urgency=medium
+
+  * New versioning scheme
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 01 Feb 2024 16:17:56 +0000
+
 pycparser (2.21-1pexip1) pexip-bookworm; urgency=medium
 
   * Import bookworm version.
