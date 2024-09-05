@@ -7,8 +7,6 @@
 # Eli Bendersky [https://eli.thegreenplace.net/]
 # License: BSD
 #-----------------------------------------------------------------
-from __future__ import print_function
-import platform
 import sys
 
 # This is not required if you've installed pycparser into

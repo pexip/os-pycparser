@@ -1,3 +1,7 @@
++ Starting with version 2.22, please use the GitHub UI
+  at https://github.com/eliben/pycparser/tags
+  to compare tags in order to find out what changed.
+
 + Version 2.21 (2021.11.06)
 
   - Much improved support for C11 (multiple PRs)
