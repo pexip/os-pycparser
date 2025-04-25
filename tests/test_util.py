@@ -34,15 +34,12 @@ def cpp_args(args=[]):
     return args
 
 def _bytes2str(b):
-    if sys.version_info[0] == 3:
-        return b.decode('latin-1')
-    else:
-        return b
+    return b.decode('latin-1')
 
 def run_exe(exe_path, args=[], echo=False):
     """ Runs the given executable as a subprocess, given the
         list of arguments. Captures its return code (rc) and stdout and
-        returns a pair: rc, stdout_str
+        returns a tuple: rc, stdout, stderr
     """
     popen_cmd = [exe_path] + args
     if os.path.splitext(exe_path)[1] == '.py':
@@ -50,5 +47,5 @@ def run_exe(exe_path, args=[], echo=False):
     if echo:
       print('[cmd]', ' '.join(popen_cmd))
     proc = subprocess.Popen(popen_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    proc_stdout = proc.communicate()[0]
-    return proc.returncode, _bytes2str(proc_stdout)
+    stdout, stderr = proc.communicate()
+    return proc.returncode, _bytes2str(stdout), _bytes2str(stderr)
